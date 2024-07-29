@@ -149,24 +149,16 @@
                 <span id="username">{{ Auth::user()->name }}</span>
             </div>
             <div class="info-item">
-                <label for="jabatan">Jabatan:</label>
-                <span id="jabatan">Manager</span>
-            </div>
-            <div class="info-item">
                 <label for="nama_desa">Nama Desa:</label>
-                <span id="nama_desa">Desa Cemerlang</span>
+                <span id="nama_desa">Desa Curug Sangereng</span>
             </div>
             <div class="info-item">
                 <label for="alamat_desa">Alamat Desa:</label>
-                <span id="alamat_desa">Jl. Kebun Raya No. 1, Jakarta</span>
+                <span id="alamat_desa">Kecamatan Kelapa Dua, Kabupaten Tangerang, Banten, 15333.</span>
             </div>
             <div class="info-item">
                 <label for="kontak_desa">Informasi Kontak Desa:</label>
-                <span id="kontak_desa">+62 123 456 789</span>
-            </div>
-            <div class="info-item">
-                <label for="password">Password Baru:</label>
-                <span id="password">*******</span>
+                <span id="kontak_desa">081290943893</span>
             </div>
             <div class="button-container">
                 <button type="button" class="edit-btn" onclick="window.location.href='/edit-pengaturan'">Edit</button>

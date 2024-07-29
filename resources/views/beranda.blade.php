@@ -131,7 +131,7 @@
 
 <body>
 
-    
+
 
     @include('header-sidebar')
 
@@ -150,7 +150,7 @@
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        <p>Pengunjung Website Bulan Ini</p>
+                        <p>Jumlah Laki-laki</p>
                     </div>
                     <div class="card-body">
                         <span class="card-body-number">{{ $pengunjung_bulan_ini ?? '000' }}</span>
@@ -158,7 +158,7 @@
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        <p>Pengunjung Website Hari Ini</p>
+                        <p>Jumlah perempuan</p>
                     </div>
                     <div class="card-body">
                         <span class="card-body-number">{{ $pengunjung_hari_ini ?? '000' }}</span>

@@ -209,7 +209,7 @@
         <div class="sidebar">
             <div class="profile">
                 <img src="{{ $profile_picture ?? 'https://via.placeholder.com/80x80/cccccc/000000?text=No+Image' }}" alt="{{ $profile_alt ?? 'foto profil' }}">
-                <p>{{ $user['name'] ?? 'Admin Name' }}</p>
+                <p>{{ Auth::user()->name }}</p>
             </div>
             <a href="{{ route('warga.beranda') }}" class="{{ request()->routeIs('beranda') ? 'active' : '' }}">
                 <span class="icon-circle"><i class="fas fa-home"></i></span>

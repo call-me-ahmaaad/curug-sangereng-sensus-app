@@ -152,16 +152,6 @@
     <div class="content">
         <h1>Edit Data</h1>
 
-        <div class="year-filter">
-            <button class="active">2016</button>
-            <button>2017</button>
-            <button>2018</button>
-            <button>2019</button>
-            <button>2020</button>
-            <button>2021</button>
-            <button>2022</button>
-        </div>
-
         <table id="sensusTable" class="table">
             <thead>
                 <tr>
@@ -170,6 +160,7 @@
                     <th>KK</th>
                     <th>Nama</th>
                     <th>Kepunyaan KTP</th>
+                    <th>Status JKN</th>
                     <th>Tempat Lahir</th>
                     <th>Tanggal Lahir</th>
                     <th>Jenis Kelamin</th>
@@ -190,6 +181,7 @@
                     <td>KK</td>
                     <td>Nama</td>
                     <td>Kepunyaan KTP</td>
+                    <th>Status JKN</th>
                     <td>Tempat Lahir</td>
                     <td>Tanggal Lahir</td>
                     <td>Jenis Kelamin</td>
@@ -208,6 +200,7 @@
                     <td>KK</td>
                     <td>Nama</td>
                     <td>Kepunyaan KTP</td>
+                    <th>Status JKN</th>
                     <td>Tempat Lahir</td>
                     <td>Tanggal Lahir</td>
                     <td>Jenis Kelamin</td>
@@ -226,6 +219,7 @@
                     <td>KK</td>
                     <td>Nama</td>
                     <td>Kepunyaan KTP</td>
+                    <th>Status JKN</th>
                     <td>Tempat Lahir</td>
                     <td>Tanggal Lahir</td>
                     <td>Jenis Kelamin</td>
@@ -244,6 +238,7 @@
                     <td>KK</td>
                     <td>Nama</td>
                     <td>Kepunyaan KTP</td>
+                    <th>Status JKN</th>
                     <td>Tempat Lahir</td>
                     <td>Tanggal Lahir</td>
                     <td>Jenis Kelamin</td>
@@ -262,6 +257,7 @@
                     <td>KK</td>
                     <td>Nama</td>
                     <td>Kepunyaan KTP</td>
+                    <th>Status JKN</th>
                     <td>Tempat Lahir</td>
                     <td>Tanggal Lahir</td>
                     <td>Jenis Kelamin</td>
@@ -280,6 +276,7 @@
                     <td>KK</td>
                     <td>Nama</td>
                     <td>Kepunyaan KTP</td>
+                    <th>Status JKN</th>
                     <td>Tempat Lahir</td>
                     <td>Tanggal Lahir</td>
                     <td>Jenis Kelamin</td>
@@ -298,6 +295,7 @@
                     <td>KK</td>
                     <td>Nama</td>
                     <td>Kepunyaan KTP</td>
+                    <th>Status JKN</th>
                     <td>Tempat Lahir</td>
                     <td>Tanggal Lahir</td>
                     <td>Jenis Kelamin</td>
@@ -319,7 +317,7 @@
                     "searching": true,
                     "ordering": true,
                     "info": true,
-                    "pageLength": 25, // Set the number of entries per page
+                    "pageLength": 25,
                     "lengthChange": false
                 });
             });
