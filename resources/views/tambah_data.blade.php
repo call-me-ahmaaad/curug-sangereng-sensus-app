@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Data</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Tambahkan CSS Choices.js -->
+    <link href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" rel="stylesheet" />
+
+    <!-- Tambahkan JS Choices.js -->
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -19,190 +26,28 @@
         }
 
         .container {
-            width: calc(100% - 260px);
-            max-width: auto;
-            padding: 20px;
-            background-color: #f4f4f4;
+            background-color: #ffffff;
             border-radius: 10px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin-top: 300px;
-            margin-left: 280px;
-        }
-
-        h2.page-title {
-            margin-bottom: 20px;
-            color: #333;
-            text-align: left;
-            font-size: 30px;
-            font-weight: bold;
-        }
-
-        .form-container {
-            background-color: #d9d9d9;
-            border-radius: 50px;
-            padding: 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .form-group {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            padding: 5px;
-        }
-
-        label {
-            flex: 0 0 30%;
-            font-size: 1em;
-            color: #333;
-        }
-
-        input[type="text"],
-        input[type="date"],
-        select {
-            flex: 1;
-            padding: 10px;
-            background-color: #969696;
-            border: none;
-            border-radius: 5px;
-            color: #fff;
-            font-size: 0.9em;
-        }
-
-        input[type="text"]::placeholder,
-        input[type="date"]::placeholder {
-            color: #dcdcdc;
-        }
-
-        .radio-group {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            flex: 1;
-        }
-
-        .radio-group label {
-            margin-right: 20px;
-            font-size: 0.9em;
-        }
-
-        .radio-group input {
-            margin-right: 5px;
-        }
-
-        .button-group {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .btn-back,
-        .btn-save {
-            background-color: #ccc;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 20px;
-            font-size: 1em;
-            color: #fff;
-            cursor: pointer;
-            margin: 0 10px;
-            transition: background-color 0.3s ease;
-            display: flex;
-            align-items: center;
-        }
-
-        .btn-back {
-            background-color: #888;
-        }
-
-        .btn-save {
-            background-color: #6247aa;
-        }
-
-        .btn-back:hover {
-            background-color: #666;
-        }
-
-        .btn-save:hover {
-            background-color: #4d2f8e;
-        }
-
-        .fas {
-            margin-right: 5px;
-        }
-
-        /* Responsive styles */
-        @media (max-width: 1024px) {
-            .container {
-                margin-left: 60px;
-                margin-top: 80px;
-                width: calc(100% - 80px);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                margin-left: 20px;
-                margin-top: 60px;
-                width: calc(100% - 40px);
-            }
-
-            .form-group {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            label {
-                flex: 0 0 100%;
-                margin-bottom: 5px;
-            }
-
-            input[type="text"],
-            input[type="date"],
-            select {
-                flex: 1;
-                width: 100%;
-            }
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
+            position: relative;
+            padding: 40px;
+            top: 650px;
+            left: 100px;
+            bottom: 20px;
+            ;
+            max-width: 1000px;
             width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
         }
 
         .modal-content {
             background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
             border: 1px solid #888;
-            width: 300px;
             border-radius: 10px;
             text-align: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            position: relative;
         }
 
-        .modal-content h3 {
-            margin: 0 0 15px;
-            color: #333;
-        }
-
-        .modal-content p {
-            margin: 0 0 20px;
-            color: #666;
-        }
-
-        .close {
+        .modal-content .close {
             position: absolute;
             right: 15px;
             top: 10px;
@@ -212,200 +57,352 @@
             cursor: pointer;
         }
 
-        .close:hover,
-        .close:focus {
+        .modal-content .close:hover,
+        .modal-content .close:focus {
             color: #333;
             text-decoration: none;
             cursor: pointer;
         }
 
-        .button-group-modal {
-            display: flex;
-            justify-content: center;
+        .form-group {
+            margin-bottom: 1.5rem;
         }
 
-        .btn-cancel,
-        .btn-confirm {
-            padding: 10px 20px;
-            margin: 5px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.9em;
-            transition: background-color 0.3s ease;
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .form-check {
+            margin-bottom: 1rem;
+        }
+
+        .d-flex {
             display: flex;
+            justify-content: space-between;
             align-items: center;
         }
 
-        .btn-cancel {
-            background-color: #ccc;
-            color: #333;
+        .page-title {
+            text-align: center;
+            margin-bottom: 2rem;
         }
-
-        .btn-confirm {
-            background-color: #6247aa;
-            color: #fff;
-        }
-
-        .btn-cancel:hover {
-            background-color: #aaa;
-        }
-
-        .btn-confirm:hover {
-            background-color: #4d2f8e;
-        }
-
     </style>
 </head>
 
 <body>
     @include('header-sidebar') <!-- Mengikutsertakan layout header-sidebar -->
-
     <div class="container">
-        <h2 class="page-title">Detail Data yang Dipilih</h2>
-        <div class="form-container">
-            <form action="#" method="POST">
-                @csrf <!-- Menambahkan token CSRF untuk keamanan -->
-
-                <div class="form-group">
-                    <label for="kk">KK:</label>
-                    <input type="text" id="kk" name="kk" placeholder="Masukkan KK">
-                </div>
-
-                <div class="form-group">
-                    <label for="nik">NIK:</label>
-                    <input type="text" id="nik" name="nik" placeholder="Masukkan NIK">
-                </div>
-
-                <div class="form-group">
-                    <label for="nama">Nama:</label>
-                    <input type="text" id="nama" name="nama" placeholder="Masukkan Nama">
-                </div>
-
-                <div class="form-group">
-                    <label for="alamat">Alamat:</label>
-                    <input type="text" id="alamat" name="alamat" placeholder="Masukkan Alamat">
-                </div>
-
-                <div class="form-group">
-                    <label for="tanggal_lahir">Tanggal Lahir:</label>
-                    <input type="date" id="tanggal_lahir" name="tanggal_lahir" placeholder="Masukkan Tanggal Lahir">
-                </div>
-
-                <div class="form-group">
-                    <label for="gender">Gender:</label>
-                    <select id="gender" name="gender">
-                        <option value="laki-laki">Laki-laki</option>
-                        <option value="perempuan">Perempuan</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="kewarganegaraan">Kewarganegaraan:</label>
-                    <input type="text" id="kewarganegaraan" name="kewarganegaraan"
-                        placeholder="Masukkan Kewarganegaraan">
-                </div>
-
-                <div class="form-group">
-                    <label for="agama">Agama:</label>
-                    <select id="agama" name="agama">
-                        <option value="islam">Islam</option>
-                        <option value="kristen">Kristen</option>
-                        <option value="katolik">Katolik</option>
-                        <option value="hindu">Hindu</option>
-                        <option value="buddha">Buddha</option>
-                        <option value="konghucu">Konghucu</option>
-                        <option value="lainnya">Lainnya</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="bpjs">Apakah BPJS sudah terdaftar?</label>
-                    <div class="radio-group">
-                        <label><input type="radio" name="bpjs" value="sudah"> Sudah</label>
-                        <label><input type="radio" name="bpjs" value="belum"> Belum</label>
-                        <label><input type="radio" name="bpjs" value="tidak_tahu"> Tidak Tahu</label>
+        <div class="form-selection">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="formSelect" id="keluargaRadio" value="keluarga"
+                    onclick="showForm('keluarga')">
+                <label class="form-check-label" for="keluargaRadio">Form Keluarga</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="formSelect" id="peroranganRadio" value="perorangan"
+                    onclick="showForm('perorangan')"checked>
+                <label class="form-check-label" for="peroranganRadio">Form Perorangan</label>
+            </div>
+            <h2 class="page-title">Detail Data yang Dipilih</h2>
+            <!-- form keluarga -->
+            <div class="form-container" id="keluargaForm">
+                <form action="#" method="POST">
+                    @csrf
+                    <div class="form-group">
+                        <label for="kk">No KK:</label>
+                        <input type="text" class="form-control" id="kk" name="kk"
+                            placeholder="Masukkan No KK">
                     </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="ktp">Apakah KTP sudah terdaftar?</label>
-                    <div class="radio-group">
-                        <label><input type="radio" name="ktp" value="sudah"> Sudah</label>
-                        <label><input type="radio" name="ktp" value="belum"> Belum</label>
-                        <label><input type="radio" name="ktp" value="tidak_tahu"> Tidak Tahu</label>
+                    <div class="form-group">
+                        <label for="kepala_keluarga">Kepala Keluarga:</label>
+                        <input type="text" class="form-control" id="kepala_keluarga" name="kepala_keluarga"
+                            placeholder="Masukkan Kepala Keluarga">
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label>Status PKH:</label><br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" id="pkh_menerima" name="status_pkh"
+                                value="menerima">
+                            <label class="form-check-label" for="pkh_menerima">Menerima</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" id="pkh_tidak_menerima" name="status_pkh"
+                                value="tidak_menerima">
+                            <label class="form-check-label" for="pkh_tidak_menerima">Tidak Menerima</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="rt">RT:</label>
+                        <select class="form-control" id="rt" name="rt">
+                            <option value="">Pilih RT</option>
+                            <!-- Tambahkan opsi RT di sini -->
+                            <option value="01">01</option>
+                            <option value="02">02</option>
+                            <option value="03">03</option>
+                            <!-- Tambahkan lebih banyak opsi sesuai kebutuhan -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="rw">RW:</label>
+                        <select class="form-control" id="rw" name="rw">
+                            <option value="">Pilih RW</option>
+                            <!-- Tambahkan opsi RW di sini -->
+                            <option value="01">01</option>
+                            <option value="02">02</option>
+                            <option value="03">03</option>
+                            <!-- Tambahkan lebih banyak opsi sesuai kebutuhan -->
+                        </select>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <button class="btn btn-secondary" type="button" onclick="history.back()"><i
+                                class="fas fa-arrow-left"></i> Kembali</button>
+                        <button class="btn btn-primary" type="button" data-toggle="modal"
+                            data-target="#confirmationModal"><i class="fas fa-save"></i> Simpan</button>
+                    </div>
+                </form>
+            </div>
+            <!-- form perorangan -->
+            <div class="form-container" id="peroranganForm">
+                <form action="#" method="POST">
+                    @csrf
+                    <div class="form-group">
+                        <label for="nik">NIK:</label>
+                        <input type="text" class="form-control" id="nik" name="nik"
+                            placeholder="Masukkan NIK">
+                    </div>
 
-                <div class="form-group">
-                    <label for="tahun">Tahun Data:</label>
-                    <input type="text" id="tahun" name="tahun" placeholder="Masukkan Tahun Data">
-                </div>
+                    <div class="form-group">
+                        <label for="akte">No Akte Lahir:</label>
+                        <input type="text" class="form-control" id="akte" name="akte"
+                            placeholder="Masukkan No Akte Lahir">
+                    </div>
 
-                <div class="button-group">
-                    <!-- Mengubah onclick untuk menggunakan history.back() -->
-                    <button class="btn-back" type="button" onclick="history.back()"><i class="fas fa-arrow-left"></i> Kembali</button>
-                    <!-- Menggunakan modal untuk konfirmasi simpan -->
-                    <button class="btn-save" type="button"><i class="fas fa-save"></i> Simpan</button>
-                </div>
-            </form>
-        </div>
-    </div>
+                    <div class="form-group">
+                        <label for="kk">No KK:</label>
+                        <input type="text" class="form-control" id="kk" name="kk"
+                            placeholder="Masukkan No KK">
+                    </div>
 
-    <!-- Modal untuk konfirmasi -->
-    <div id="confirmationModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h3>Konfirmasi</h3>
-            <p>Apakah Anda yakin ingin menyimpan perubahan?</p>
-            <div class="button-group-modal">
-                <button class="btn-cancel"><i class="fas fa-times"></i> Batalkan</button>
-                <button class="btn-confirm"><i class="fas fa-check"></i> Simpan Perubahan</button>
+                    <div class="form-group">
+                        <label for="nama">Nama:</label>
+                        <input type="text" class="form-control" id="nama" name="nama"
+                            placeholder="Masukkan Nama">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Apakah KTP sudah terdaftar?</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="ktp" id="ktpSudah"
+                                value="sudah">
+                            <label class="form-check-label" for="ktpSudah">Sudah</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="ktp" id="ktpBelum"
+                                value="belum">
+                            <label class="form-check-label" for="ktpBelum">Belum</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="status_jkn">Status JKN:</label>
+                        <select class="form-control" id="status_jkn" name="status_jkn">
+                            <option value="jkn_pbi">JKN PBI</option>
+                            <option value="jkn_non_pbi">JKN NON PBI</option>
+                            <option value="non_jkn">NON JKN</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tempat_lahir">Tempat Lahir:</label>
+                        <select class="form-control" id="tempat_lahir" name="tempat_lahir">
+                            <option value="">Pilih Tempat Lahir</option>
+                            <option value="jakarta">Jakarta</option>
+                            <option value="bandung">Bandung</option>
+                            <option value="surabaya">Surabaya</option>
+                            <option value="yogyakarta">Yogyakarta</option>
+                            <option value="medan">Medan</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tanggal_lahir">Tanggal Lahir:</label>
+                        <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir"
+                            placeholder="Masukkan Tanggal Lahir">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="gender">Jenis Kelamin:</label>
+                        <select class="form-control" id="gender" name="gender">
+                            <option value="laki-laki">Laki-laki</option>
+                            <option value="perempuan">Perempuan</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="agama">Agama:</label>
+                        <select class="form-control" id="agama" name="agama">
+                            <option value="islam">Islam</option>
+                            <option value="kristen">Kristen</option>
+                            <option value="katolik">Katolik</option>
+                            <option value="hindu">Hindu</option>
+                            <option value="buddha">Buddha</option>
+                            <option value="konghucu">Konghucu</option>
+                            <option value="lainnya">Lainnya</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="golongan_darah">Golongan Darah:</label>
+                        <select class="form-control" id="golongan_darah" name="golongan_darah">
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pendidikan">Pendidikan:</label>
+                        <select class="form-control" id="pendidikan" name="pendidikan">
+                            <option value="sd">Sekolah Dasar (SD)</option>
+                            <option value="smp">Sekolah Menengah Pertama (SMP)</option>
+                            <option value="sma">Sekolah Menengah Atas (SMA)</option>
+                            <option value="d1">Diploma 1 (D1)</option>
+                            <option value="d2">Diploma 2 (D2)</option>
+                            <option value="d3">Diploma 3 (D3)</option>
+                            <option value="s1">Sarjana (S1)</option>
+                            <option value="s2">Magister (S2)</option>
+                            <option value="s3">Doktor (S3)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pekerjaan">Pekerjaan:</label>
+                        <select class="form-control" id="pekerjaan" name="pekerjaan">
+                            <option value="pelajar">Pelajar</option>
+                            <option value="mahasiswa">Mahasiswa</option>
+                            <option value="pegawai_negeri">Pegawai Negeri</option>
+                            <option value="pegawai_swasta">Pegawai Swasta</option>
+                            <option value="wiraswasta">Wiraswasta</option>
+                            <option value="pensiunan">Pensiunan</option>
+                            <option value="ibu_rumah_tangga">Ibu Rumah Tangga</option>
+                            <option value="lainnya">Lainnya</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="status_pernikahan">Status Pernikahan:</label>
+                        <select class="form-control" id="status_pernikahan" name="status_pernikahan">
+                            <option value="belum_menikah">Belum Menikah</option>
+                            <option value="menikah">Menikah</option>
+                            <option value="cerai_hidup">Cerai Hidup</option>
+                            <option value="cerai_mati">Cerai Mati</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="status_keluarga">Status Keluarga:</label>
+                        <select class="form-control" id="status_keluarga" name="status_keluarga">
+                            <option value="kepala_keluarga">Kepala Keluarga</option>
+                            <option value="istri">Istri</option>
+                            <option value="anak">Anak</option>
+                            <option value="bukan_anggota_keluarga">Bukan Anggota Keluarga</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="kewarganegaraan">Kewarganegaraan:</label>
+                        <select class="form-control" id="kewarganegaraan" name="kewarganegaraan">
+                            <option value="wni">WNI</option>
+                            <option value="wna">WNA</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nama_ibu">Nama Ibu:</label>
+                        <input type="text" class="form-control" id="nama_ibu" name="nama_ibu"
+                            placeholder="Masukkan nama ibu">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tahun">Tahun Data:</label>
+                        <input type="text" class="form-control" id="tahun" name="tahun"
+                            placeholder="Masukkan Tahun Data">
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <button class="btn btn-secondary" type="button" onclick="history.back()"><i
+                                class="fas fa-arrow-left"></i> Kembali</button>
+                        <button class="btn btn-primary" type="button" data-toggle="modal"
+                            data-target="#confirmationModal"><i class="fas fa-save"></i> Simpan</button>
+                    </div>
+                </form>
             </div>
         </div>
-    </div>
 
-    <script>
-        // Ambil elemen modal dan tombol
-        const modal = document.getElementById("confirmationModal");
-        const closeBtn = document.querySelector(".close");
-        const cancelBtn = document.querySelector(".btn-cancel");
-        const confirmBtn = document.querySelector(".btn-confirm");
+        <!-- Modal untuk konfirmasi -->
+        <div id="confirmationModal" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Konfirmasi</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Apakah Anda yakin ingin menyimpan perubahan?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i
+                                class="fas fa-times"></i> Batalkan</button>
+                        <button type="button" class="btn btn-primary" id="confirmSave"><i class="fas fa-check"></i>
+                            Simpan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        // Fungsi untuk menampilkan modal
-        function showModal() {
-            modal.style.display = "flex"; // Menampilkan modal
-        }
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script>
+            document.getElementById('confirmSave').addEventListener('click', function() {
+                // Aksi untuk menyimpan data setelah konfirmasi
+                document.querySelector('form').submit();
+            });
 
-        // Fungsi untuk menutup modal
-        function closeModal() {
-            modal.style.display = "none"; // Menyembunyikan modal
-        }
+            document.addEventListener('DOMContentLoaded', function() {
+                var tempatLahir = document.getElementById('tempat_lahir');
+                var choices = new Choices(tempatLahir, {
+                    placeholderValue: 'Pilih Tempat Lahir',
+                    searchEnabled: true
+                });
+            });
+            var keluargaForm = document.getElementById('keluargaForm');
+            keluargaForm.style.display = 'none';
 
-        // Tambahkan event listener ke tombol "Simpan" untuk menampilkan modal
-        document.querySelector(".btn-save").addEventListener("click", showModal);
+            function showForm(formType) {
+                var keluargaForm = document.getElementById('keluargaForm');
+                var peroranganForm = document.getElementById('peroranganForm');
+                let container = document.querySelector('.container');
 
-        // Tambahkan event listener ke tombol tutup dan "Batalkan"
-        closeBtn.addEventListener("click", closeModal);
-        cancelBtn.addEventListener("click", closeModal);
+                if (formType === 'keluarga') {
+                    keluargaForm.style.display = 'block';
+                    peroranganForm.style.display = 'none';
+                    container.style.top = "40px";
 
-        // Tambahkan event listener ke tombol "Simpan Perubahan"
-        confirmBtn.addEventListener("click", function () {
-            // Aksi ketika konfirmasi
-            alert("Perubahan disimpan!");
-            closeModal(); // Tutup modal setelah konfirmasi
-
-            // Menggunakan form submit untuk mengirimkan data
-            document.querySelector("form").submit();
-        });
-
-        // Tutup modal jika pengguna mengklik di luar konten modal
-        window.addEventListener("click", function (event) {
-            if (event.target === modal) {
-                closeModal();
+                } else if (formType === 'perorangan') {
+                    keluargaForm.style.display = 'none';
+                    peroranganForm.style.display = 'block';
+                    container.style.top = "650px";
+                }
             }
-        });
-    </script>
+        </script>
 </body>
 
 </html>
