@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Konten Dashboard</title>
     <style>
-    
+
     body {
     font-family: 'DM Sans', sans-serif;
     margin: 0;
@@ -130,7 +130,7 @@ h2 {
     function checkScreenWidth() {
         const screenWidth = window.innerWidth;
         const mobileWarning = document.getElementById('mobileWarning');
-        
+
         // Check if the screen width is less than 768px
         if (screenWidth < 768) {
             mobileWarning.style.display = 'flex'; // Show the warning
@@ -147,38 +147,36 @@ h2 {
 
 <body>
     @include('header-sidebar')
-    <div class="download-container">
+    <div class="container download-container">
         <h1>Download Data</h1>
         <p>Silahkan Memilih Data yang ingin Di Download</p>
-        <div class="data-grid">
-            <div class="data-item">
-                <a href="unduhdata2" class="data-link">
-                    <div class="image-placeholder">
-                        <img src="path-to-image-2016.jpg" alt="Data 2016">
-                    </div>
-                    <h2>Tahun 2016</h2>
-                    <p>Data Penduduk Tahun 2016 rentang Bulan Januari - Desember</p>
-                </a>
-            </div>
-            <div class="data-item">
-                <a href="unduhdata2" class="data-link">
-                    <div class="image-placeholder">
-                        <img src="path-to-image-2017.jpg" alt="Data 2017">
-                    </div>
-                    <h2>Tahun 2017</h2>
-                    <p>Data Penduduk Tahun 2017 rentang Bulan Januari - Desember</p>
-                </a>
-            </div>
-            <div class="data-item">
-                <a href="unduhdata2" class="data-link">
-                    <div class="image-placeholder">
-                        <img src="path-to-image-2018.jpg" alt="Data 2018">
-                    </div>
-                    <h2>Tahun 2018</h2>
-                    <p>Data Penduduk Tahun 2018 rentang Bulan Januari - Desember</p>
-                </a>
-            </div>
-            <!-- Repeat similar structure for other years as needed -->
+        <h2>Data Sensus Keluarga</h2>
+        <div class="row data-grid">
+            @foreach($tahunData_keluarga as $tahun_keluarga)
+                <div class="col-md-4 data-item">
+                    <a href="{{ route('keluarga.export', $tahun_keluarga) }}" class="data-link">
+                        <div class="image-placeholder">
+                            <img src="{{ URL::asset('/assets/excel.png') }}" alt="Data {{ $tahun_keluarga }}" width="80px">
+                        </div>
+                        <h2>Tahun {{ $tahun_keluarga }}</h2>
+                        <p>Data Keluarga Tahun {{ $tahun_keluarga }} rentang Bulan Januari - Desember</p>
+                    </a>
+                </div>
+            @endforeach
+        </div>
+        <h2>Data Sensus Warga</h2>
+        <div class="row data-grid">
+            @foreach($tahunData_warga as $tahun_warga)
+                <div class="col-md-4 data-item">
+                    <a href="{{ route('warga.export', $tahun_warga) }}" class="data-link">
+                        <div class="image-placeholder">
+                            <img src="{{ URL::asset('/assets/excel.png') }}" alt="Data {{ $tahun_warga }}" width="80px">
+                        </div>
+                        <h2>Tahun {{ $tahun_warga }}</h2>
+                        <p>Data Penduduk Tahun {{ $tahun_warga }} rentang Bulan Januari - Desember</p>
+                    </a>
+                </div>
+            @endforeach
         </div>
     </div>
 

@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Keluarga;
+use App\Models\Warga;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class WargaController extends Controller
 {
@@ -13,7 +17,10 @@ class WargaController extends Controller
 
     public function web_warga_data_download()
     {
-        return view('unduh_data');
+        $tahunData_keluarga = Keluarga::select('tahun_data')->distinct()->pluck('tahun_data');
+        $tahunData_warga = Warga::select('tahun_data')->distinct()->pluck('tahun_data');
+
+        return view('unduh_data', compact('tahunData_keluarga', 'tahunData_warga'));
     }
 
     public function web_warga_add()
